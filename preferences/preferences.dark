@@ -1,0 +1,40 @@
+#
+# SCREEN & FONTS SECTION ############################
+#
+
+\screen_zoom 130
+\screen_font_roman "Lucida Console"
+\screen_font_sans "Lucida Console"
+\screen_font_typewriter "Lucida Console"
+\preview_scale_factor .85
+
+#
+# COLOR SECTION ###################################
+#
+
+\set_color "cursor" "#dddddd"
+\set_color "background" "#000000"
+\set_color "foreground" "#dddddd"
+\set_color "selection" "#aaaa7f"
+\set_color "latex" "#e4c0a0"
+\set_color "preview" "#ffffff"
+\set_color "notebg" "#000000"
+\set_color "command" "#dddddd"
+\set_color "commandframe" "#dddddd"
+\set_color "graphicsbg" "#dddddd"
+\set_color "math" "#ffff00"
+\set_color "mathbg" "#000000"
+\set_color "mathmacrobg" "#ffffff"
+\set_color "mathframe" "#aaffff"
+\set_color "mathline" "#00ff00"
+\set_color "captionframe" "#c30000"
+\set_color "collapsableframe" "#be0000"
+\set_color "insetbg" "#ffaaff"
+\set_color "eolmarker" "#00ff00"
+\set_color "tabularline" "#dddddd"
+\set_color "bottomarea" "#000000"
+\set_color "top" "#c5c5c5"
+\set_color "bottom" "#797979"
+\set_color "left" "#c5c5c5"
+\set_color "right" "#797979"
+\set_color "buttonbg" "#212121"

@@ -1,0 +1,5165 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}			% ermöglicht das Einbinden von Grafiken, sehr wichtig!!!!!!!!!!
+\usepackage{subfigure}			% erweiterte Darstellung von Bildern
+\usepackage{fancyhdr}			% für formatierte Kopf- und Fußzeilen
+\usepackage{setspace}			% Package zum Kontrollieren von Leerräumen
+\usepackage{listings}			% Möglickeit zum Anzeigen von Quelltexten
+\usepackage{color,moreverb}			% Farben
+\usepackage{amsmath,amssymb}		% erweiteter Formelsatz und zusätzliche Mathe-Symbole
+
+%-----------------------------------------------------------------------------
+% Abstand von Kapitelübersicht zur Kopfzeile verringern
+%-----------------------------------------------------------------------------
+\renewcommand*{\chapterheadstartvskip}{\vspace*{-\topskip}} 
+
+%-----------------------------------------------------------------------------
+% Schriftarten anpassen
+%-----------------------------------------------------------------------------
+\setkomafont{sectioning}{\sffamily\bfseries}		% Titelzeilen
+\setkomafont{caption}{\small}			% Schrift für Caption
+\setkomafont{captionlabel}{\sffamily\bfseries\small}		% Schrift für 'Abbildung'
+\setkomafont{chapterentry}{\bfseries}			% Schrift für Inhaltsverzeichnis
+\setkomafont{chapter}{\Large\bfseries}			% Schrift für Section
+\setkomafont{section}{\large}			% Schrift für Subsection
+\setkomafont{subsection}{\normalsize}			% Schrift für Subsubsection
+
+%-----------------------------------------------------------------------------
+% Umbenennen des Literatur- und Abbildungsverzeichnis
+% Literatur	-> Literaturverzeichnis
+% Abbildung	-> Bild
+%-----------------------------------------------------------------------------
+\addto{\captionsngerman}{
+\renewcommand{\refname}{Literaturverzeichnis}
+\renewcommand{\figurename}{Bild}
+}
+
+%-----------------------------------------------------------------------------
+% Konstanten festlegen
+%-----------------------------------------------------------------------------
+\newcommand{\Fakultaet}{Fachbereich Informatik}
+\newcommand{\Verfasser}{MUSTERMANN}
+\newcommand{\Geburtstag}{00.00.1900}
+\newcommand{\Geburtsort}{MUSTERSTADT}
+\newcommand{\Titel}{Erkennung von nix im Nullraum}
+\newcommand{\Studiengang}{Informatik}
+\newcommand{\Matrikel}{666}
+\newcommand{\Gutachter}{Dr.-Dr. Mustermann}
+\newcommand{\ZweitGutachter}{Name Zweitgutachter}
+\newcommand{\Typ}{Diplomarbeit}
+
+%-----------------------------------------------------------------------------
+% Daten für die Titel des Artikels
+%-----------------------------------------------------------------------------
+\title{Diplomarbeit}
+\author{\Verfasser}
+\date{\today{}}
+
+
+%-----------------------------------------------------------------------------
+% Metadaten in pdf einfügen
+%-----------------------------------------------------------------------------
+\usepackage[	pdftex,
+pdfauthor={\Verfasser},
+pdftitle={\Titel},	
+pdfcreator={MiKTeX, LaTeX with hyperref and KOMA-Script}, 
+pdfsubject={Diplomarbeit},
+pdfkeywords={\Titel},
+plainpages=false,
+hypertexnames=false,
+pdfpagelabels]
+{hyperref}
+
+%-----------------------------------------------------------------------------
+% Farbe der Links in PDF-Dokumenten definieren
+%-----------------------------------------------------------------------------
+\definecolor{LinkColor}{rgb}{0,0,0.5}	% Festlegen einer neuen Farbe
+
+\hypersetup{	colorlinks=true,	% farbliche Links
+breaklinks=true,		% Zeilenumbruch erlauben
+linkcolor=black,		% Farbe für interne Links
+citecolor=black,		% Farbe für Links zum Literaturverzeichnis
+filecolor=LinkColor,		% Farbe für externe Dateilinks
+menucolor=LinkColor,
+urlcolor=LinkColor}		% Farbe für externe Link
+
+%-----------------------------------------------------------------------------
+% Kopf- und Fusszeile bestimmen
+%-----------------------------------------------------------------------------
+\pagestyle{fancy}	
+\fancyhf{}
+\fancypagestyle{plain}{}
+
+\fancyhead[R]{\nouppercase{\leftmark}}	% Kopfzeile rechts bzw. außen
+\renewcommand{\headrulewidth}{0.5pt}	% Linie oben
+\fancyfoot[R]{\thepage}		% Fußzeile rechts bzw. außen
+
+%-----------------------------------------------------------------------------
+% Definition fuer Quelltextlistings
+%-----------------------------------------------------------------------------
+\lstloadlanguages{C++,C}
+
+\definecolor{white}{gray}{1.0}						
+\definecolor{lightgray}{gray}{0.9}						
+\definecolor{darkblue}{rgb}{0,0,.6}	
+\definecolor{darkred}{rgb}{.6,0,0}	
+\definecolor{darkgreen}{rgb}{0,.5,0}	
+
+
+\lstset{language=C,			% Programmiersprache der Listings
+alsolanguage=Matlab,			% alternative Programmiersprache der Listings
+frame=single,				% keinen Rahmen
+frameround=ffff,			% wenn ein Rahmen dargestellt werden soll, sind die Ecken spitz
+captionpos=b,				% Position der Benennung
+numbers=left,				% Zeilennummern links angeben
+stepnumber=1,			% in welchem Abstand sollen Zeilennummern angeben werden (1 2 3..)
+numbersep=10pt,			% Abstand zwischen Nummerierung und Listing
+numberstyle=\tiny,				
+breaklines=true,			% Zeilenumbruch zulassen
+breakautoindent=true,
+postbreak=\space,
+tabsize=4,				% Tabulator auf 4 setzen
+escapechar=\$,
+basicstyle=\scriptsize\ttfamily,
+keywordstyle=\color{darkblue}\bfseries\ttfamily,
+stringstyle=\ttfamily\color{darkred},  		% Darstellung der Strings
+commentstyle=\itshape\color{darkgreen},		% Darstellung der Kommentare
+showspaces=false,			% leerzeichen nicht anzeigen
+showstringspaces=false,			% keine Leerzeichen bei Strings anzeigen
+xleftmargin=.52cm,
+xrightmargin=.52cm,				
+backgroundcolor=\color{white}}		% Hintergrundfarbe des Listings}
+
+%-----------------------------------------------------------------------------
+% Kapitelweise Nummerierung von Tabellen, Bildern, Gleichungen
+%-----------------------------------------------------------------------------
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\numberwithin{equation}{section}
+
+%-----------------------------------------------------------------------------
+% Glossar
+%-----------------------------------------------------------------------------
+\usepackage[automake,counter=section,numberedsection=false]{glossaries}
+\makeglossaries
+\defglsdisplayfirst[\glsdefaulttype]{\textit{#1}}  % display only the first occurence in italic
+\newcommand{\addgloss}[2]{ \newglossaryentry{#1}{name={#1},description={#2}} } % shortcut
+
+%-----------------------------------------------------------------------------
+% Farbige Tabellen
+%-----------------------------------------------------------------------------
+\usepackage{colortbl}
+\newcommand{\grayrow}{ \rowcolor[gray]{0.85} }
+\newcommand{\graycell}{ \cellcolor[gray]{0.85} }
+\end_preamble
+\options listof=flat
+\use_default_options true
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans helvet
+\font_typewriter default
+\font_math auto
+\font_default_family sfdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 92
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref false
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\headheight 1.5cm
+\footskip 1.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip bigskip
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Titelseite erstellen
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{titlepage}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+setlength
+\backslash
+headsep{-5mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+begin{figure}[!h]
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+begin{minipage}{0.5
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+textbf{Wilhelm Büchner Hochschule} 
+\backslash
+
+\backslash
+                %% HOCHSCHULE
+\end_layout
+
+\begin_layout Plain Layout
+
+			Darmstadt 
+\backslash
+
+\backslash
+                                          %% STANDORT
+\end_layout
+
+\begin_layout Plain Layout
+
+			Fachbereich Informatik                                %% FACHBEREICH
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+end{minipage}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+begin{minipage}{0.5
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+begin{flushright}
+\end_layout
+
+\begin_layout Plain Layout
+
+				
+\backslash
+includegraphics{images/wbh-logo.png}             %% LOGO DES BEREICHES
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+end{flushright}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+end{minipage}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+vspace*{2cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+begin{flushright}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{
+\backslash
+huge 
+\backslash
+Typ}
+\backslash
+
+\backslash
+[0.2cm]                                     %% TYP: DIPLOM/BACHELOR/MASTER-THESIS
+ -> siehe Vorspann
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+vspace*{1cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{Arbeitstitel:}
+\backslash
+
+\backslash
+[0.4cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+		{
+\backslash
+Huge 
+\backslash
+Titel} 
+\backslash
+
+\backslash
+[1.0cm]                                  %% ARBEITS-TITEL -> siehe Vorspann
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+vspace*{5cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+end{flushright}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+begin{table*}[b]
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+begin{tabular}{rl}
+\end_layout
+
+\begin_layout Plain Layout
+
+            Betreuer: & 
+\backslash
+Gutachter 
+\backslash
+
+\backslash
+                             %% ERST-GUTACHTER / BETREUER -> siehe Vorspann
+\end_layout
+
+\begin_layout Plain Layout
+
+			Eingereicht am: & 
+\backslash
+today 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+            Eingereicht von: & 
+\backslash
+Verfasser 
+\backslash
+
+\backslash
+                      %% AUTOR        -> siehe Vorspann
+\end_layout
+
+\begin_layout Plain Layout
+
+			Matrikel-Nummer: & 
+\backslash
+Matrikel 
+\backslash
+
+\backslash
+                       %% MATRIKEL-NR.
+ -> siehe Vorspann
+\end_layout
+
+\begin_layout Plain Layout
+
+			Anschrift: & MUSTERWEG 6, 19061 MUSTERSTADT 
+\backslash
+
+\backslash
+        %% ANSCHRIFT
+\end_layout
+
+\begin_layout Plain Layout
+
+            Studiengang: & 
+\backslash
+Studiengang                           %% STUDIENGANG  -> siehe Vorspann
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+end{table*}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{titlepage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Folgeblatt für Titelseite mit Kurzinfo untenstehend
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{
+\backslash
+fill}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{11.2cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+textbf{
+\backslash
+Verfasser}
+\backslash
+
+\backslash
+                                         %% AUTOR         -> siehe Vorspann
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+emph{
+\backslash
+Titel}
+\backslash
+
+\backslash
+                                               %% ARBEITSTITEL  -> siehe
+ Vorspann
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+Typ
+\backslash
+
+\backslash
+                                                        %% DIPLOM/BACHELOR-/MAST
+ER-THESIS -> siehe Vorspann
+\end_layout
+
+\begin_layout Plain Layout
+
+  Studiengang 
+\backslash
+Studiengang
+\backslash
+
+\backslash
+                                    %% STUDIENGANG                    ->
+ siehe Vorspann
+\end_layout
+
+\begin_layout Plain Layout
+
+  Wilhelm Büchner Hochschule Darmstadt
+\backslash
+
+\backslash
+                        %% HOCHSCHULE
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  Bearbeitungszeitraum: 01.
+ Oktober 2014 - 
+\backslash
+today               %% HIER DEN BEARBEITUNGSZEITRAUM EINTRAGEN!
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Glossar
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+% Einträge hier definieren, im Text als 
+\backslash
+gls{Name} einfügen, 
+\end_layout
+
+\begin_layout Plain Layout
+
+% werden in der ersten Textstelle kursiv dargestellt, 
+\end_layout
+
+\begin_layout Plain Layout
+
+% Aktualisierung Glossar-Verzeichnis erfolgt nicht immer bei Vorschaumodus
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+addgloss{Name}{Description....}
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Barcode}{Schnittstellenstandard....bla blubb}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Cache}{Pufferspeicher für performanzkritische Komponenten wie Prozessor
+en, Grafikkarten und Festplatten}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{CameraLink}{Schnittstellenstandard für industrielle Bildverarbeitungsko
+mponenten über spezielle Kabel und Protokolle für hohe Datenraten}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Cluster}{Rechnerverbund miteinander vernetzter Computer zur Steigerung
+ der Rechenkapazität}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Continuous-Integration}{Schnittstellenstandard für industrielle
+ Bildverarbeitungskomponenten über spezielle Kabel und Protokolle für hohe
+ Datenraten}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Cropper}{engl.
+ to crop = abschneiden, Verfahren zur Reduzierung der Bildgröße durch Beschnitt
+ von Randbereichen}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Framegrabber}{Geräte für die Anbindung von Kamerasystemen zum Erfassen
+ von Bilddaten und deren Übertragung in den Arbeitsspeicher}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Gigabit Ethernet}{Standard für die Kommunikation bei Übertragungsraten
+ von bis zu 1.000 Megabit/s in Ethernet-kompatiblen Netzwerken}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Histogramm}{Grafische Darstellung der Grauwertverweilung eines
+ Bildes}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Hyper-Threading}{Technologie zur hardwareseitigen Bereitstellung
+ von Multithreading für Intel-Prozessoren}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{JavaDoc}{Software-Dokumentationswerkzeug zur Erzeugung von HTMLDokument
+ationen mittels spezieller Kommentare inQuelltexten}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Barcode}{Scriptsprache nach ECMAScript Standard, Java-ähnliche
+ Syntax, ursprünglich für dynam.
+ Webseiten entwickelt}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Komplexität}{Komplexität von Algorithmen, Angabe als O-Notation,
+ Maß für Anzahl der Elementarschritte abhg.
+ von Größe der Eingangsvariablen}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Pixel}{Picture Element, einzelner Bildpunkt in digitalen Bilddaten,
+ repräsentiert eine Farbinformation an einer Position (x,y)}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{PowerPC}{Performance optimization with enhanced RISC Performance
+ Chip, Prozessorarchitektur von Apple, IBM und Motorola}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Qt}{Plattformunabhängiges SDK für C++ basierte Anwendungen}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Scheduler}{Steuerfunktion für die zeitliche Abarbeitung von Prozessen}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Thread}{Ausführungsstrang eines Programmes, ermöglicht mittels
+ Aufteilung von Software in Threads (Multithreading) Nutzung mehrerer Prozessore
+n}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addgloss{Unix}{Mehrbenutzersystem, Grundlage moderner Konzepte wie hierarchisch
+ gegliederte Dateisysteme, Basis div.
+ Betriebssysteme}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Römische Paginierung / Seitennummerierung 
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Seitennummerierung mit eigenem Seitenzähler, 
+\end_layout
+
+\begin_layout Plain Layout
+
+% zwecks Fortsetzen der römischen Seitenzählung im Anhang
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcounter{romanPagenumber}                                   % neuer Seitenzähl
+er
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{Roman}                                          % Einschalten
+ der römischen Seitenzahlen
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% Zeilenabstand auf 1.5 setzen
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+onehalfspacing
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead{Abstract}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Abstract
+\end_layout
+
+\begin_layout Standard
+...
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Zeilenabstand auf normal setzen
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+singlespacing
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Inhaltsverzeichnis
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead{Inhaltsverzeichnis}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pdfbookmark[1]{Inhaltsverzeichnis}{Inhaltsverzeichnis}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+tableofcontents
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% Zeilenabstand auf 1.5 setzen
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+onehalfspacing
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Nomenclature / Abkürzungen werden standardm.
+ nicht gedruckt, bevor "makeindex" aufgerufen wird
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+% Workaround - benötigt ZWINGEND MINDESTENS EINEN "Nom:" Eintrag, andernfalls
+ kommt es zu LaTeX Fehlern!
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+let
+\backslash
+nomenclOrig
+\backslash
+nomenclature 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand*{
+\backslash
+nomenclature}[3][]{#2
+\backslash
+nomenclOrig[#1]{#2}{#3}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Abkürzungsverzeichnis erstellen
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead{Abkürzungsverzeichnis}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+nomname}{Abkürzungsverzeichnis}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+nomlabelwidth}{.15
+\backslash
+hsize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+set_width "auto"
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Kopf- und Fußzeilen formatieren
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}	 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhf{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancypagestyle{plain}{}                % Kopfzeile rechts bzw.
+ außen 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+nouppercase{
+\backslash
+leftmark}}  % Linie oben 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+chaptermark}[1]{
+\backslash
+markboth{
+\backslash
+thechapter
+\backslash
+ #1}{}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+headrulewidth}{0.5pt}    % Fußzeile rechts bzw.
+ außen 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+thepage} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Römische Paginierung - Seitenzähler setzen
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Seitenzähler auf aktuelle Seitenzahl setzen, zwecks Fortsetzen der römischen
+ Seitenzählung im Anhang
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{romanPagenumber}{
+\backslash
+value{page}}  % eigener Seitenzähler erhält Wert der aktuellen Seite
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Arabische Paginierung / Seitennummerierung
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+\paragraph_spacing onehalf
+\noindent
+Einleitung
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: *** ZITAT zum Thema ***
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Chapter
+\paragraph_spacing onehalf
+\noindent
+Problemstellung 
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Section
+\noindent
+Ist-Zustand
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Section
+\noindent
+Zielsetzung
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+Zielgruppe
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+Abgrenzung
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Section
+\noindent
+Technische Produktumgebung
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+Software
+\end_layout
+
+\begin_layout Standard
+Die Softwareentwicklung und Ausführung der Bildverarbeitungsapplikationen
+ erfolgt bei ASinteg auf Linux-basierten Systemen.
+ Hierfür wird als Basis ein 
+\noun on
+openSUSE
+\noun default
+ 12.3 Betriebssystem mit Kernel 3.4 im 64 Bit-Modus eingesetzt.
+ Als Entwicklungsumgebung kommt das C++ Toolkit 
+\noun on
+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Qt"
+description "Plattformunabhängiges SDK für C++ basierte Anwendungen"
+
+\end_inset
+
+
+\noun default
+ 5.3 mit dem 
+\noun on
+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "GCC"
+description "GNU Compiler Collection, Sammlung von OpenSource Compiler Programmen für Programmiersprachen wie C, C++, Java u.v.m."
+
+\end_inset
+
+
+\noun default
+ 4.7 Compiler zum Einsatz.
+ Dabei liefert 
+\noun on
+Qt
+\noun default
+ neben den plattformunabhängigen C++ Bibliotheken für Datei-, Netzwerk-
+ und GUI-Funktionalität auch eine plattformunabhängig verfügbare grafische
+ Entwicklungsumgebung (IDE) namens 
+\noun on
+Qt Creator
+\noun default
+.
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+Für die Produktionsumgebung sind die Plattformen openSUSE Linux ab Version
+ 12.3 (64 Bit) sowie Windows ab Version 7 SP1 (64 Bit) maßgeblich.
+ Nur Softwareprojekte, die auf diesen Plattformen uneingeschränkt funktional
+ sind, werden in realen Projekten der ASinteg eingesetzt.
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+Hardware
+\end_layout
+
+\begin_layout Standard
+Neben der Festlegung der Softwareumgebung ist insbesondere die Spezifikation
+ der Mindestanforderungen der Hardwareumgebung wesentlich für die Beurteilung
+ der Leistungsfähigkeit und den Einsatz in Produktionsumgebungen.
+\end_layout
+
+\begin_layout Subsubsection
+Entwicklungssystem
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+Für die Entwicklung und Evaluierung der Softwarelösung wird ein ASinteg
+ Entwicklungssystem mit folgenden Ausstattungsmerkmalen eingesetzt (es werden
+ nur für die Bildverarbeitung relevante Merkmale aufgeführt):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+grayrow
+\end_layout
+
+\end_inset
+
+
+\series bold
+Komponente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gerätebezeichnung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DELL Latitude E6520
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Prozessor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Intel Core i7-2760QM 2.4 GHz
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CPU-Kerne
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4 physische, 4 logische (HyperThreading)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CPU-Cache
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6 MB L3-Cache
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Arbeitsspeicher
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4 GB DDR3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Netzwerkanschluss
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ethernet 1000Base-T mit Unterstützung für Jumbo Frames
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Jumbo Frames: nicht standardisierte übergroße Ethernet-Paketgröße (MTU)
+ von 9000 Bytes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Peripherie
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3x USB 2.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Hardwareausstattung Entwicklungssystem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Gigabit Ethernet}
+\end_layout
+
+\end_inset
+
+-Schnittstelle ist Grundvoraussetzung für den Einsatz moderner industrieller
+ Kamerasysteme, um die großen Datenmengen bei kontinuierlicher Aufnahme
+ verarbeiten zu können.
+ 
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+Trotz der vorgenannten Hardwareanforderungen zum Entwicklungssystem soll
+ die zu entwickelnde Lösung prinzipiell auf jedem x86 kompatiblen PC-System
+ ausführbar sein.
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsubsection
+Bildaufnahmesysteme
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Chapter
+\paragraph_spacing onehalf
+\noindent
+Grundlagen
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Section
+Verarbeitungskette
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Section
+\noindent
+Bildaufnahme
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+\noindent
+Beleuchtung
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsubsection
+LED-Beleuchtung
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsubsection
+Beleuchtungswinkel
+\end_layout
+
+\begin_layout Paragraph
+Hellfeld-Beleuchtung
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Paragraph
+Dunkelfeld-Beleuchtung
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+\noindent
+Optik
+\end_layout
+
+\begin_layout Standard
+...
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Abbildungsgesetze
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsubsection
+Schärfentiefe
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsubsection
+Verzeichnungen
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsubsection
+Objektivarten
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+CS / C / F-Mount
+\end_layout
+
+\begin_layout Plain Layout
+Tele/Telezentrisch/Makro
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Abberationen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+\noindent
+Kamera
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsubsection
+CCD-Sensoren
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsubsection
+CMOS-Sensoren
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsubsection
+Zeilenkameras
+\end_layout
+
+\begin_layout Standard
+-> GigE Vision Standard
+\end_layout
+
+\begin_layout Standard
+-> eindimensionale vs.
+ zweidimensionale Kameras
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+[[SKIZZE: Matrix + Zeilenkamera]] ...evtl STEMMER S.224 oder Schematisch Matrix
+ + 1-Zeile + 3-Zeilen
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Schematischer Aufbau Matrix- und Zeilenkameras
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Section
+\noindent
+Bildvorverarbeitung
+\end_layout
+
+\begin_layout Standard
+Die Hauptaufgaben der Bildvorverarbeitung sind:
+\end_layout
+
+\begin_layout Itemize
+Korrektur von Sensoreinflüssen und nichtlinearen Charakteristiken (Rauschen)
+\end_layout
+
+\begin_layout Itemize
+Optimierung von Helligkeit und Kontrast
+\end_layout
+
+\begin_layout Itemize
+geometrische Entzerrung zum Eliminieren von Objektiveinflüssen
+\end_layout
+
+\begin_layout Standard
+...
+ 
+\end_layout
+
+\begin_layout Section
+\noindent
+Bildauswertung
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Bildauswertung"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Section
+\noindent
+Entwicklungsumgebung
+\end_layout
+
+\begin_layout Standard
+In den folgenden Abschnitten wird die Entwicklungsumgebung beschrieben,
+ die für die Durchführung der Evaluierung der Lösungswege und Implementierung
+ der Lösung eingesetzt wird.
+ Da sämtliche Softwareprojekte bei ASinteg in der Programmiersprache C++
+ umgesetzt werden, beginnt die Beschreibung mit dem bei ASinteg breit eingesetzt
+en C++-Framework 
+\noun on
+Qt
+\noun default
+.
+\end_layout
+
+\begin_layout Subsection
+C++-Framework Qt
+\end_layout
+
+\begin_layout Standard
+Das 
+\noun on
+Qt
+\noun default
+ Framework ist ein weit verbreitetes C++-Framework zur Entwicklung von plattform
+unabhängigen Anwendungen.
+ Ursprünglich von der norwegischen Firma 
+\noun on
+Trolltech
+\noun default
+ für die Entwicklung von grafischen Oberflächen ins Leben gerufen, hat sich
+ 
+\noun on
+Qt
+\noun default
+ zu einem auf Servern, Desktops, Mobilgeräten, Embedded- und Automotive-Systemen
+ verbreiteten Framework entwickelt.
+ Seine weite Verbreitung begann mit dem Linux Fenstermanager KDE, mittlerweile
+ nutzen Unternehmen wie Google, Adobe und Samsung das Framework ebenfalls
+ für ihre Softwareentwicklung.
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+ASinteg ImageManager Framework
+\end_layout
+
+\begin_layout Standard
+Der 
+\noun on
+ASinteg ImageManager
+\noun default
+ ist ein C++-Framework zur Erstellung komplexer Applikationen im Bereich
+ industrieller Bildverarbeitung.
+ Das Framework basiert dabei auf 
+\noun on
+Qt
+\noun default
+ und richtet sich in puncto Schnittstellen und Handhabung streng nach den
+ Vorgaben des C++-Toolkits.
+\end_layout
+
+\begin_layout Standard
+Das 
+\noun on
+ImageManager
+\noun default
+ Framework ist hoch modular aufgebaut und nutzt ähnlich Qt eine logische
+ wie physische Unterteilung in Module wie z.B.
+ Core, Network und Userinterface.
+ Hierzu sind alle Schnittstellen möglichst generisch
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Quotes gld
+\end_inset
+
+generisch
+\begin_inset Quotes grd
+\end_inset
+
+ steht in diesem Zusammenhang für Datentyp-unabhängig
+\end_layout
+
+\end_inset
+
+ konzipiert und direkte Abhängigkeiten zwischen Modulen auf ein Minimum
+ beschränkt.
+\end_layout
+
+\begin_layout Standard
+So nutzen alle Module das Qt Property-Framework (dynamische Properties)
+ mit seinen generischen Schnittstellen die für Konfiguration und die Persistenz.
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Chapter
+\paragraph_spacing onehalf
+\noindent
+Lösungsansatz
+\end_layout
+
+\begin_layout Standard
+...
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Evaluierungsumgebung
+\end_layout
+
+\begin_layout Subsection
+Ablauf
+\end_layout
+
+\begin_layout Standard
+...Ziel und Ablauf der Validierung
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Evaluierung-Parameter"
+
+\end_inset
+
+Parameter
+\end_layout
+
+\begin_layout Standard
+Aus den Erfahrungen mit den bestehenden Separierungsverfahren und den Anforderun
+gen aus der Aufgabenstellung wurden die für einen objektiven Vergleich notwendig
+en Kriterien einer Validierung ermittelt.
+\end_layout
+
+\begin_layout Standard
+Die Validierung erfolgt auf einheitlicher Hard- und Software für die folgenden
+ Validierungsparameter:
+\end_layout
+
+\begin_layout Itemize
+Performanz (Verarbeitungszeit in Millisekunden)
+\end_layout
+
+\begin_layout Itemize
+Störungsunempfindlichkeit (Fehlerrate bzgl.
+ nicht oder falsch verarbeitete Bilder)
+\end_layout
+
+\begin_layout Itemize
+Qualität (prozentuale Größenabweichung der Ergebnisbilder)
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+Testsoftware
+\end_layout
+
+\begin_layout Standard
+-> Programmablaufplan
+\end_layout
+
+\begin_layout Standard
+-> Qt Unit-Test Framework 
+\begin_inset Quotes gld
+\end_inset
+
+QTestLib
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\noindent
+Evaluierung von Bildverarbeitungsverfahren
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Evaluierung von Algorithmen und Toolkits
+\end_layout
+
+\begin_layout Standard
+...Validierung verschiedener Implementationen für folgende Validierungsparameter:
+\end_layout
+
+\begin_layout Itemize
+Performanz
+\end_layout
+
+\begin_layout Itemize
+Zielplattformen
+\end_layout
+
+\begin_layout Itemize
+Kosten
+\end_layout
+
+\begin_layout Standard
+Im Zuge der Validierung werden folgende Implementierungen untersucht:
+\end_layout
+
+\begin_layout Itemize
+C++ Algorithmus 
+\end_layout
+
+\begin_layout Itemize
+...
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+OpenCV Bibliothek
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:OpenCV-Bibliothek"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die 
+\noun on
+Open Source Computing Vision Library
+\noun default
+, kurz 
+\noun on
+OpenCV
+\noun default
+, ist eine weit verbreitete Programmbibliothek für die Implementierung von
+ Anwendungen zur Bildverarbeitung und für maschinelles Sehen.
+ Ursprünglich von Intel im Jahre 1998 initiiert, wird OpenCV heute unter
+ der freien BSD-Lizenz durch die Unternehmen Willow Garage und Itseez sowie
+ einer großen Gemeinschaft von ehrenamtlichen Entwicklern gepflegt.
+ Ziel von OpenCV ist es, Bildverarbeitung...
+ 
+\end_layout
+
+\begin_layout Standard
+[[GRAFIK Struktur OpenCV Lib]]
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+MVTec HALCON Toolkit
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:MVTec-HALCON-Toolkit"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das weltweit erfolgreiche und besonders in der Industrie weit verbreitete
+ Bildverarbei\SpecialChar \-
+tungs-Toolkit 
+\noun on
+HALCON
+\noun default
+ des Münchener Unternehmens 
+\noun on
+MVTec
+\noun default
+ kann auf eine Historie von mehr als einem Jahrzehnt verweisen.
+ Die 
+\noun on
+MVTec Software GmbH
+\noun default
+ wurde 1996 durch Dr.
+ Eckstein und Dr.
+ Munkelt als Spin-off der Technischen Universität München und dem Bayerischen
+ Forschungszentrum für wissensbasierte Systeme (FORWISS) gegründet.
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+HALCON
+\noun default
+ ist eine in C und C++ entwickelte universelle Software für industrielle
+ Bildverarbeitung, welche vorwiegend für den Einsatz durch Systemintegratoren
+ und Entwicklern von Bildverarbeitungs-, optischen Inspektions- und Qualitätskon
+trollsystemen konzipiert wurde.
+ Die Stärke von 
+\noun on
+HALCON
+\noun default
+ ist die hochperformante Implementierung in C/C++, die im Vergleich zu Wettbewer
+bslösungen große Anzahl verfügbarer Bildverarbeitungsalgorithmen, die Unterstütz
+ung vielfältiger Framegrabber und Kamerasysteme sowie die grafische Entwicklung
+ mit Quelltextgenerierung.
+\end_layout
+
+\begin_layout Standard
+Mittels der grafischen Entwicklungsumgebung 
+\noun on
+HDeveloper
+\noun default
+ können komplexe Bildverarbeitungsanwendungen durch Assistenten und mittels
+ einer Skriptsprache erstellt werden.
+ Dabei unterstützen grafische Analysewerkzeuge die Einbindung und Parametrierung
+ von Bildverarbeitungsalgorithmen, bei 
+\noun on
+HALCON
+\noun default
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Operatoren
+\begin_inset Quotes grd
+\end_inset
+
+ genannt.
+ Nach Erstellung der Skripte können diese in verschiedene Programmiersprachen
+ übersetzt oder mittels der HALCON C/C++ Bibliothek zur Laufzeit interpretiert
+ werden.
+\end_layout
+
+\begin_layout Standard
+Die HALCON Bibliotheken und die 
+\noun on
+HALCON
+\noun default
+ Laufzeitumgebung steht dabei für verschiedene Plattformen und Prozessorarchitek
+turen bereit, was den Einsatz insbesondere in industriellen Embedded-Systemen
+ ermöglicht, z.B.
+ zur Entwicklung intelligenter Kamerasysteme und Robotersteuerungen.
+\end_layout
+
+\begin_layout Standard
+Neben dem hohen Einsatzspektrum und der im Wettbewerb sehr hohen Performanz
+ zeichnet sich 
+\noun on
+HALCON
+\noun default
+ allerdings auch durch sein vergleichsweise hohes Kostenniveau aus.
+ Dabei sind neben den Kosten für Entwicklerlizenzen auch Laufzeitlizenzen
+ pro Installation zu entrichten, welche nach Funktionsumfang gestaffelt
+ sind.
+ Im Gegensatz zu anderen Herstellern gewährt 
+\noun on
+MVTec
+\noun default
+ dabei kaum Preisnachlässe und vertreibt die Software nur über ein Netzwerk
+ zertifizierter Partner, was einen Preiswettbewerb wirksam unterminiert.
+\end_layout
+
+\begin_layout Standard
+Basierend auf HALCON entwickelt ASinteg seit 9 Jahren u.a.
+ internationale OCR-basierte Adresslesesysteme, komplexe Identifikations-
+ und Inspektionslösungen im Logistikbereich sowie Systeme zur Qualitätskontrolle
+ in der Pharma- und Lebensmittelindustrie.
+ Hierfür wird auf die C++ API von 
+\noun on
+HALCON
+\noun default
+ aufgesetzt, welche für die zeitkritischen und komplexen Bildverarbeitungsaufgab
+en die effizienteste Implementierung darstellt.
+ Der C++ Quelltext wird dabei aus im HDeveloper erstellten Projekten erzeugt,
+ was die Wartbarkeit und die Fehlerdiagnose mittels der grafischen Entwicklungsu
+mgebung erheblich vereinfacht.
+\end_layout
+
+\begin_layout Standard
+Aufgrund der Performanzvorteile und der seitens MVTec verwendeten Prozessor-spez
+i\SpecialChar \-
+fischen Optimierungen kommen bei ASinteg ausschließlich Systeme mit Intel
+ Prozessoren und überwiegend Linux-Betriebssysteme zum Einsatz.
+ Für reine Desktop-Lösungen wird zudem Windows als Betriebssystem eingesetzt,
+ um die Integration in die kundenseitige IT-Landschaft zu ermöglichen.
+\end_layout
+
+\begin_layout Standard
+[[GRAFIK Halcon + Extensions]]
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+C++ Algorithmus
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\noindent
+Lösungsentscheidung
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+Die folgende Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Kennzahlenschema-für-Validierung"
+
+\end_inset
+
+ stellt das eingesetzte Kennzahlenschema und dessen Gewichtungen dar.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Validierungsparameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Einheit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Gewichtungsfaktor
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+minimale Ausführungszeit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Millisekunden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maximale Ausführungszeit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Millisekunden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+durchschnittliche Ausführungszeit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Millisekunden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nicht separierte Bilder
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Anzahl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+zu stark beschnittene Bilder
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Anzahl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+gemittelte Gut-Rate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Prozent
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+durchschnittliche Größenabweichung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Prozent
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Kennzahlenschema-für-Validierung"
+
+\end_inset
+
+Kennzahlenschema für Validierungsparameter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für die Bestimmung der einzelnen Gewichtungsfaktoren wurde der Kunde (die
+ ASinteg GmbH) nach der Bedeutung und den Auswirkungen der einzelnen Parameter
+ auf die Produktion befragt.
+\end_layout
+
+\begin_layout Standard
+Die Testergebnisse sind in der Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Testergebnisse-Validierung"
+
+\end_inset
+
+ aufgeführt, welche dem Anhang entnommen werden kann.
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Chapter
+\noindent
+Lösungsentwurf
+\end_layout
+
+\begin_layout Standard
+...Konzeption und Feinplanung der Software mittels Methoden des Objektorientierten
+ Design (OOD) in
+\end_layout
+
+\begin_layout Standard
+...Einbindung in das ASinteg ImageManager Framework und 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Qt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Section
+\noindent
+Planung und Konzeption
+\end_layout
+
+\begin_layout Standard
+...Planung und Realisierung von Softwareprojekten und -komponenten bei ASinteg
+ GmbH nach festgelegten Planungsphasen...
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+Zeitplanung
+\end_layout
+
+\begin_layout Standard
+...
+ Gantt-Diagramm aus Redmine
+\end_layout
+
+\begin_layout Subsection
+Business-Case
+\end_layout
+
+\begin_layout Standard
+...
+ Use-Case-Diagramm
+\end_layout
+
+\begin_layout Subsection
+Ablaufplan
+\end_layout
+
+\begin_layout Standard
+...
+ Sequenz-Diagramm
+\end_layout
+
+\begin_layout Subsection
+Klassenstruktur
+\end_layout
+
+\begin_layout Standard
+...
+ Klassendiagramm
+\end_layout
+
+\begin_layout Section
+\noindent
+Systementwurf
+\end_layout
+
+\begin_layout Standard
+...
+ Bibliothek + Klassen + UnitTest + ConsoleApp / GUI-App für Parametrierung
+\end_layout
+
+\begin_layout Chapter
+\noindent
+Implementierung
+\end_layout
+
+\begin_layout Section
+\noindent
+Bildaufnahme
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Beispiel: Filereader
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Section
+\noindent
+Filterung
+\end_layout
+
+\begin_layout Standard
+TODO: u.a.
+ Kontrastspreizung und Mean-Filter
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Section
+\noindent
+Separierung
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Chapter
+\noindent
+Nachweis der Funktionalität
+\end_layout
+
+\begin_layout Standard
+Im vorangegangenen Kapitel wurde die Implementierung der Lösung gemäß der
+ Test-Driven-Development Methode beschrieben, deren Umsetzung auf umfangreiche
+ Testfunktionen beruht.
+ Nachdem bereits Implementierungsdetails erläutert wurden, widmet sich dieses
+ Kapitel der Beschreibung der Testverfahren, Testdaten und den Testaufbauten.
+ 
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Section
+\noindent
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Testverfahren-und--umgebung"
+
+\end_inset
+
+Testverfahren und -umgebung
+\end_layout
+
+\begin_layout Standard
+TODO: Beschreibung QS-Verfahren, wie z.B.
+ UnitTests, indiziertes Testdeck, Benchmarkumgebung/-Tools
+\end_layout
+
+\begin_layout Standard
+-> Positiv-/Negativ-Tests mit synthetischen und realen Daten/Bildern
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+Testdaten
+\end_layout
+
+\begin_layout Standard
+Wie im Kapitel Evaluierung beschrieben, wird für alle Tests und Validierungen
+ ein einheitlicher Satz von Bilddateien verwendet.
+\end_layout
+
+\begin_layout Standard
+-> Format Bilddaten
+\end_layout
+
+\begin_layout Standard
+-> Verzeichnisstruktur
+\end_layout
+
+\begin_layout Standard
+-> Dateiformat Indizierung + Testergebnisse
+\end_layout
+
+\begin_layout Standard
+-> Tabelle mit Testdaten (Kamera, System, Paket/Brief, Anzahl)
+\end_layout
+
+\begin_layout Subsection
+Unit-Tests
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
+Benchmarks
+\end_layout
+
+\begin_layout Standard
+Für die Testung der Verfahren auf ihre Performanz erfolgen sog.
+ Benchmark-Tests.
+ Diese dienen zur Ermittlung nachvollziehbarer Kennzahlen der Ausführungsgeschwi
+ndigkeit von Funktionen.
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+Während der Testläufe dürfen keine weiteren Anwendungen ausgeführt werden,
+ die durch ihre Prozessorlast die Zeitmessungen verfälschen könnten.
+ Auch sind die Tests nur auf dem spezifizierten Testsystem auszuführen,
+ um eine vergleichbare Datenbasis zu gewährleisten.
+\end_layout
+
+\begin_layout Section
+\noindent
+Testergebnisse
+\end_layout
+
+\begin_layout Standard
+TODO: Tabelle mit empirischen Daten der Benchmarks und UnitTests
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+Die Testergebnisse gliedern sich dabei gemäß den Validierungsparametern
+ wie folgt:
+\end_layout
+
+\begin_layout Itemize
+Performanz
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+minimale Ausführungszeit in Millisekunden
+\end_layout
+
+\begin_layout Itemize
+maximale Ausführungszeit in Millisekunden
+\end_layout
+
+\begin_layout Itemize
+durchschnittliche Ausführungszeit in Millisekunden
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Störungsunempfindlichkeit
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+nicht separierte Bilder
+\end_layout
+
+\begin_layout Itemize
+zu stark separierte Bilder
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Qualität 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+prozentuale Größenabweichung der Ergebnisbilder vom indizierten Soll-Wert
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Schwellwert-Cropper
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Neuer Cropper
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+minimale Ausführungszeit (ms)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maximale Ausführungszeit (ms)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+durchschnittliche Ausführungszeit (m)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nicht separierte Bilder
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+zu stark beschnittene Bilder
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+gemittelte Gut-Rate (%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+durchschnittliche Größenabweichung (%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Testergebnisse finale Lösung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+\noindent
+Bewertung und Ausblick
+\end_layout
+
+\begin_layout Standard
+-> Schwierigkeiten
+\end_layout
+
+\begin_layout Standard
+-> Änderungen an Verfahren + Konzept 
+\end_layout
+
+\begin_layout Standard
+-> Erfahrungen aus der Arbeit 
+\end_layout
+
+\begin_layout Standard
+-> Auswirkungen auf ASinteg 
+\end_layout
+
+\begin_layout Standard
+-> Einsatz der Lösung 
+\end_layout
+
+\begin_layout Standard
+-> Vorteile
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CameraLink}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Römische Paginierung/Seitenzahlen, mit automatischer Fortsetzung der Seitenzäh
+lung
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{Roman}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{page}{
+\backslash
+theromanPagenumber}    % echten Seitenzähler ändern
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Glossar anzeigen
+\end_layout
+
+\begin_layout Plain Layout
+
+% WICHTIG: Glossareinträge am Dokumentanfang mit definieren! 
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Glossar}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+printglossary[nonumberlist=true]  % nonumberlist: keine seitennummern (Bug
+ bei römischer+arabischer Seitennummerierung)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Literaturverzeichnis mit "literatur.lib" und "alphadin.bst" erstellen
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintAll"
+bibfiles "literatur"
+options "bibtotoc,alphadin"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Abbildungsverzeichnis erstellen
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+listoffigures
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Tabellenverzeichnis erstellen
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+listoftables
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Anhang
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{1}                     % Kapitelnummerierung auf "1"
+ setzen
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+thechapter}{
+\backslash
+Alph{chapter}}  % Buchstabe "A" als Kapitelnummer
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead{Anhang}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Addchap
+Anhang
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Inhaltsverzeichnis für Anhänge
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Benötigt für jeden Eintrag ein 
+\backslash
+label{sec:XXX}!
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+% Syntax: 
+\backslash
+contentsline{ [EBENE=chapter|section|...] }{ 
+\backslash
+numberline{[NR]} [TITEL] }{ [SEITENNR] } { }
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+contentsline{section}{
+\backslash
+numberline{1}Tabellen}{
+\backslash
+pageref{sec:Tabellen}}{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+contentsline{section}{
+\backslash
+numberline{2}Bilder}{
+\backslash
+pageref{sec:Bilder}}{}                           
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+contentsline{section}{
+\backslash
+numberline{3}Programm-Listings}{
+\backslash
+pageref{sec:Listings}}{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+contentsline{section}{
+\backslash
+numberline{4}Eidesstattliche Erklärung}{
+\backslash
+pageref{sec:Erklaerung}}{}    %% --> SELBSTÄNDIGKEITSERKLÄRUNG
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Anhang : Tabellen
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{sec:Tabellen}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead{Anhang Tabellen}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Addsec
+Tabellen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways true
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="8">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\size small
+Validierungsparameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Referenz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Kontrast
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Median
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Schärfung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Schwellwertseg.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Regionenseg.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Kantenseg.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+min.
+ Ausführungszeit (ms)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+1.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+max.
+ Ausführungszeit (ms)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+7.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+durchschn.
+ Ausführungszeit (ms)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+4.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+nicht separiert
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+zu stark beschnitten
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+gemittelte Gut-Rate (%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+99.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+durchschn.
+ Größenabweichung (%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+10.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Testergebnisse-Validierung"
+
+\end_inset
+
+Kennzahlenschema für Validierungsparameter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Anhang : Bilder
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{sec:Bilder}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead{Anhang Bilder}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Addsec
+Bilder
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+....
+\end_layout
+
+\begin_layout Plain Layout
+....
+\end_layout
+
+\begin_layout Plain Layout
+....
+\end_layout
+
+\begin_layout Plain Layout
+....
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bild xy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Listingverzeichnis erstellen
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Programm-Listings}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead{Programm-Listings}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{sec:Listings}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset toc
+LatexCommand lstlistoflistings
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Eine Möglichkeit Quelltext aufzulisten.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[caption={Ein 'Hallo Welt' Programm}]{listings/Hello.c} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+// Noch eine Möglichkeit Quelltext einzufügen - hier mit Bunti Klicki:
+\end_layout
+
+\begin_layout Plain Layout
+
+// "Einfügen" -> "Programmlisting", dann in letzte Listing-Zeile gehen und
+ "Einfügen" -> "Legende"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+cv::Mat src, dest;
+\end_layout
+
+\begin_layout Plain Layout
+
+src = cv::imread("test.png");
+\end_layout
+
+\begin_layout Plain Layout
+
+cv::meanFilter(src, dest, 5);
+\end_layout
+
+\begin_layout Plain Layout
+
+src = dest;
+\end_layout
+
+\begin_layout Plain Layout
+
+cv::threshold(src, dest, 0, 140, cv::THRESH_BINARY);
+\end_layout
+
+\begin_layout Plain Layout
+
+cv::imshow("cropped image", dest);
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mean-Filter und Schwellwert-Segmentierer in OpenCV
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+% Eidesstattliche Erklärung
+\end_layout
+
+\begin_layout Plain Layout
+
+%-----------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead{Eidesstattliche Erklärung}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{sec:Erklaerung}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Addsec
+Eidesstattliche Erklärung
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Verfasser, Matrikelnummer  
+\backslash
+Matrikel     %% AUTOR + MATRIKELNR.
+ -> siehe Vorspann  
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Hiermit erkläre ich, dass ich diese Arbeit selbständig abgefasst und keine
+ anderen als die angegebenen Quellen und Hilfsmittel benutzt habe.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Die Arbeit wurde bisher keiner anderen Prüfungsbehörde vorgelegt und auch
+ noch nicht veröffentlicht.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{p{6cm}p{7cm}} 	
+\backslash
+
+\backslash
+   
+\backslash
+
+\backslash
+   
+\backslash
+
+\backslash
+   
+\backslash
+
+\backslash
+   Ort, Abgabedatum & Unterschrift (Vor- und Zuname)
+\backslash
+end{tabular}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
