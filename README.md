@@ -14,3 +14,9 @@ Some documents still contain german texts and have to be translated into English
 The Master Thesis template is made for University of Applied Science of Wismar, Germany and tested with LyX 2.1.
 
 The Diploma Thesis template is made for Wilhelm Büchner Hochschule, Germany and tested with LyX 2.1.
+
+### LyX
+
+All templates are created/tested with LyX 2.x under Linux and Windows.
+
+For Windows the installation of official LyX-Bundles is advised - see: https://wiki.lyx.org/Windows/Windows 
