@@ -7,6 +7,10 @@ What You See Is What You Mean - see http://www.lyx.org
 
 ### Status
 
-Currently the templates are just taken from a real german Diploma thesis and have to be made more common.
+Currently the templates are just taken from a real german Diploma and a german Master thesis and have to be made more common.
 
 Some documents still contain german texts and have to be translated into English.
+
+The Master Thesis template is made for University of Applied Science of Wismar, Germany and tested with LyX 2.1.
+
+The Diploma Thesis template is made for Wilhelm Büchner Hochschule, Germany and tested with LyX 2.1.
