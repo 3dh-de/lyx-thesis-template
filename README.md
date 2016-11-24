@@ -40,10 +40,12 @@ The embedded bibliography of the LyX templates relies on **literatur.bib** - a [
 
 ### Directories and Files
 
-The thesis template relies on some path names for included files like BibTeX, images, source etc.
+The thesis template (in /thesis/) relies on some path names for included files like BibTeX, images, source etc.
 
-  /images/          --> JPEG, PNG, EPS image files to include into thesis
-	/listings/        --> source code files to include as listings
-	xxx_Template.lyx  --> LyX main document (the template)
-	alphadin.bst      --> BibTeX layout and formatting script to render the bibliography pages
-	literatur.bib     --> BibTeX bibliography with all your literature and web links (updated by JabRef or comparable)
+    /images/          --> JPEG, PNG, EPS image files to include into thesis
+    /listings/        --> source code files to include as listings
+    xxx_Template.lyx  --> LyX main document (the template)
+    alphadin.bst      --> BibTeX layout and formatting script to render the bibliography pages
+    literatur.bib     --> BibTeX bibliography with all your literature and web links (updated by JabRef or comparable)
+    
+**Warning:** Beware to create a new directory as copy of the here lying **/thesis/** for your new thesis. If there are any images or other files mentioned above missing, LyX will produce many errors.
