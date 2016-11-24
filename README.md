@@ -46,6 +46,6 @@ The thesis template (in /thesis/) relies on some path names for included files l
     /listings/        --> source code files to include as listings
     xxx_Template.lyx  --> LyX main document (the template)
     alphadin.bst      --> BibTeX layout and formatting script to render the bibliography pages
-    literatur.bib     --> BibTeX bibliography with all your literature and web links (updated by JabRef or comparable)
+    literatur.bib     --> BibTeX bibliography with all your literature and web links (updated by JabRef etc.)
     
 **Warning:** Beware to create a new directory as copy of the here lying **/thesis/** for your new thesis. If there are any images or other files mentioned above missing, LyX will produce many errors.
