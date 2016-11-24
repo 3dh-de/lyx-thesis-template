@@ -6,6 +6,16 @@ Please use the prepackaged installation bundles for LyX to ensure all needed thi
 
 https://wiki.lyx.org/Windows/Windows 
 
+## LyX Installation in Linux
+
+The variety of Linux distributions provides native LyX packages which - so no manual installation is needed.
+
+## LyX Installation on Mac OS
+
+For Mac users LyX provides own packages which can be found here:
+
+http://wiki.lyx.org/Mac/Mac
+
 --------------------------
 
 # GERMAN
@@ -17,7 +27,6 @@ https://wiki.lyx.org/Windows/Windows
 Da LyX mehrere externe Anwendungen für LaTeX, Dokumentenerzeugung etc. benötigt, empfiehlt sich die Installation der vorgefertigten LyX-Bundles:
 
 https://wiki.lyx.org/Windows/Windows 
-
 
 ### Variante 2: Manuelle Installation
 
@@ -35,7 +44,7 @@ https://wiki.lyx.org/Windows/Windows
 5. LyX ist bereit zum Arbeiten
    - in LyX unter "Hilfe -> LaTeX-Konfiguration" sollte bei "Koma-Script" nun "scrlttr2: ja" stehen, ist dort ein "nein" eingetragen, im MiKTex "Maintenance -> Settings" auf "Refresh FNDB" und "Update Formats" gehen, danach wieder mit Schritt 4. beginnen
 
-### Nach der Installation
+## Nach der Installation
 
 #### Dateien + Verzeichnisse
 
@@ -51,6 +60,3 @@ https://wiki.lyx.org/Windows/Windows
 
 #### TIPP: Absätze mit dicker Schrift, ohne Nummerierung
  - Absatzformat "Unterunterabschn.*" wählen - "*" steht für nicht nummeriert
-       
-______________________________________________________________________________
-    Christian Dähn, Schwerin 2014
