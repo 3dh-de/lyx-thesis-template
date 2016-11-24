@@ -20,7 +20,11 @@ Some documents still contain german texts and have to be translated into English
 - The Master Thesis template is made for University of Applied Science of Wismar, Germany and tested with LyX 2.1.
 - The Diploma Thesis template is made for Wilhelm Büchner Hochschule, Germany and tested with LyX 2.1.
 
-### LyX
+----
+
+### Required Tools
+
+#### LyX
 
 All templates are created/tested with LyX 2.1 (and higher) under Linux and Windows.
 
@@ -28,6 +32,18 @@ For [Windows](https://wiki.lyx.org/Windows/Windows) the installation of official
 
 The bundles contain all needed thirdparty packages like the LaTeX engine [MikTeX](https://miktex.org/) and [Ghostscript](http://www.ghostscript.com/).
 
-### JabRef / BibTeX
+#### JabRef / BibTeX Tool
 
 The embedded bibliography of the LyX templates relies on **literatur.bib** - a [BibTeX](http://www.bibtex.org/) file which can be updated with software like [JabRef](http://www.jabref.org). You can use this free Java app or any other app producing BibTeX files.
+
+----
+
+### Directories and Files
+
+The thesis template relies on some path names for included files like BibTeX, images, source etc.
+
+  /images/          --> JPEG, PNG, EPS image files to include into thesis
+	/listings/        --> source code files to include as listings
+	xxx_Template.lyx  --> LyX main document (the template)
+	alphadin.bst      --> BibTeX layout and formatting script to render the bibliography pages
+	literatur.bib     --> BibTeX bibliography with all your literature and web links (updated by JabRef or comparable)
