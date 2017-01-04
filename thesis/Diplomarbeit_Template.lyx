@@ -50,7 +50,6 @@
 \newcommand{\Studiengang}{Informatik}
 \newcommand{\Matrikel}{666}
 \newcommand{\Gutachter}{Dr.-Dr. Mustermann}
-\newcommand{\ZweitGutachter}{Name Zweitgutachter}
 \newcommand{\Typ}{Diplomarbeit}
 
 %-----------------------------------------------------------------------------
