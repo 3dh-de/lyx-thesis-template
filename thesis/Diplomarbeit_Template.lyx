@@ -392,7 +392,7 @@ Typ}
 
 \backslash
 [0.2cm]                                     %% TYP: DIPLOM/BACHELOR/MASTER-THESIS
- -> siehe Vorspann
+ -> siehe "LaTeX-Vorspann" im Menü "Dokument -> Einstellungen"
 \end_layout
 
 \begin_layout Plain Layout
