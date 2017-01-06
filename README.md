@@ -5,6 +5,10 @@ Here you can find some advanced templates for [LyX](http://www.lyx.org) based on
 LyX - an open source gui tool - allows you to write your thesis and other complex documents in the **WYSIWYM** method:
 *What You See Is What You Mean* - see [lyx.org](http://www.lyx.org)
 
+### License
+
+All documents in this repository are free for private and commercial use, licensed under the MIT License - see LICENSE.md.
+
 ### History
 
 Since 2002 I started writing a thesis and struggled with Word and LaTeX - both had too many quirks for a pragmatic programmer like me ;) With LyX I found a great compromise of not concerning too much about layouting, but creating highly professional documents for academic use.
