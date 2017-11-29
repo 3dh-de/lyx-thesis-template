@@ -36,6 +36,11 @@ For [Windows](https://wiki.lyx.org/Windows/Windows) the installation of official
 
 The bundles contain all needed thirdparty packages like the LaTeX engine [MikTeX](https://miktex.org/) and [Ghostscript](http://www.ghostscript.com/).
 
+#### Literature Bibliography
+
+To search literature and get entries which can be used for LyX documents you can use the search portal:
+[literatur-generator.de](http://literatur-generator.de/info/Bibtex)
+
 #### JabRef / BibTeX Tool
 
 The embedded bibliography of the LyX templates relies on **literatur.bib** - a [BibTeX](http://www.bibtex.org/) file which can be updated with software like [JabRef](http://www.jabref.org). You can use this free Java app or any other app producing BibTeX files.
