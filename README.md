@@ -32,9 +32,10 @@ Some documents still contain german texts and have to be translated into English
 
 All templates are created/tested with LyX 2.1 (and higher) under Linux and Windows.
 
-For [Windows](https://wiki.lyx.org/Windows/Windows) the installation of official **LyX-Bundles** is advised - see: https://wiki.lyx.org/Windows/Windows
+For [Windows](https://wiki.lyx.org/Windows/Windows) the installation of official **LyX-Bundles** is advised - see: https://wiki.lyx.org/Windows/Windows 
 
-The bundles contain all needed thirdparty packages like the LaTeX engine [MikTeX](https://miktex.org/) and [Ghostscript](http://www.ghostscript.com/).
+**Update:** The bundles were discontinued due to severe bugs in MikTeX - so now we have to download & install [TeX Live](https://www.tug.org/texlive/acquire-netinstall.html) manually before installing LyX.
+
 
 #### Literature Bibliography
 
