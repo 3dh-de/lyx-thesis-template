@@ -34,7 +34,7 @@ All templates are created/tested with LyX 2.1 (and higher) under Linux and Windo
 
 For [Windows](https://wiki.lyx.org/Windows/Windows) the installation of official **LyX-Bundles** is advised - see: https://wiki.lyx.org/Windows/Windows 
 
-**Update:** The bundles were discontinued due to severe bugs in MikTeX - so now we have to download & install [TeX Live](https://www.tug.org/texlive/acquire-netinstall.html) manually before installing LyX.
+**Update:** The bundles were discontinued due to severe bugs in MikTeX - so now we have to download & install [MikTeX](https://miktex.org/download) or [TeX Live](https://www.tug.org/texlive/acquire-netinstall.html) (complicated to install under Windows) manually before installing LyX.
 
 
 #### Literature Bibliography
